@@ -21,6 +21,11 @@ public class ObjectManager : MonoBehaviour
         else if (instance != this) { Destroy(gameObject); }
     }
 
+    private void Start()
+    {
+        boothSpawnerTimer = RandomBoothSpawnDelay;
+    }
+
     private void Update()
     {
         BoothSpawnerUpdate();
@@ -33,7 +38,9 @@ public class ObjectManager : MonoBehaviour
         if (boothSpawnerTimer > 0f) { return; }
 
         boothSpawnerTimer = RandomBoothSpawnDelay;
-
+    }
+    public void SpawnBooth()
+    {
         if (InactiveEventBooths.Count == 0 || AvailableBoothActivities.Count == 0) { return; }
         InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].SetActivity();
     }
