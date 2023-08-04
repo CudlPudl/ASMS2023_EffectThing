@@ -8,9 +8,12 @@ public class VisitorAi : CreatureAI
     [SerializeField] private float startPatience = 100f;
     [SerializeField] private List<VisitorPatienceStat> patienceStats = new List<VisitorPatienceStat>();
     [SerializeField] private AiAction defaultOnZeroPatience;
+    [SerializeField] private AiAction defaultOnBoothActivityEnd;
 
     public AiAction DefaultOnZeroPatience => defaultOnZeroPatience;
+    public AiAction DefaultOnBoothActivityEnd => defaultOnBoothActivityEnd;
     public AiAction OnZeroPatience { get; set; }
+    public AiAction OnBoothActivityEnd { get; set; }
 
 
     private float patienceModifier = 0.0f;
@@ -43,6 +46,7 @@ public class VisitorAi : CreatureAI
     protected override void Awake()
     {
         OnZeroPatience = DefaultOnZeroPatience;
+        OnBoothActivityEnd = DefaultOnBoothActivityEnd;
         base.Awake();
     }
 
@@ -75,6 +79,7 @@ public class VisitorAi : CreatureAI
             { patienceModifier += x.PatiencePerSecond; return; }
         });
     }
+
 
     public override void ActivateAction(CreatureAiBaseAction actionType)
     {

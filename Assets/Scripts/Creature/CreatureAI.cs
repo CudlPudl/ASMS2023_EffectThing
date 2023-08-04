@@ -161,8 +161,10 @@ public enum CreatureAiBaseAction
     defaultSpawnAction = 1,
     defaultSelectAction = 2,
     defaultTargetSetAction = 4,
+    defaultBoothActivityEnd = 5,
 
     spawnAction = 11,
     selectAction = 12,
-    targetSetAction = 14
+    targetSetAction = 14,
+    boothActivityEnd = 15,
 }
