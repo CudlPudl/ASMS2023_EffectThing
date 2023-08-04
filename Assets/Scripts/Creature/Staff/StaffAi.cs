@@ -2,17 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaffAi : MonoBehaviour
+public class StaffAi : CreatureAI
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AiAction defaultOnSelectAction;
+
+    public AiAction DefaultOnSelectAction => defaultOnSelectAction;
+    public AiAction OnSelectAction { get; set; }
+
+    protected override void Awake()
     {
-        
+        OnSelectAction = DefaultOnSelectAction;
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    // Select
+    public void Select()
     {
-        
+        TargetType = CreatureAiTargetType.none;
+        OnSelect();
+    }
+    protected void OnSelect() { ActivateAction(OnSelectAction); }
+
+
+
+
+    public void FreeAi()
+    {
+    }
+
+    public override void ActivateAction(CreatureAiBaseAction actionType)
+    {
+        switch (actionType)
+        {
+            case CreatureAiBaseAction.none:
+                break;
+            case CreatureAiBaseAction.defaultSpawnAction:
+                ActivateAction(DefaultOnSpawnAction);
+                break;
+            case CreatureAiBaseAction.defaultSelectAction:
+                ActivateAction(DefaultOnSelectAction);
+                break;
+            case CreatureAiBaseAction.defaultTargetSetAction:
+                ActivateAction(DefaultOnTargetSetAction);
+                break;
+            case CreatureAiBaseAction.spawnAction:
+                ActivateAction(OnSpawnAction);
+                break;
+            case CreatureAiBaseAction.selectAction:
+                ActivateAction(OnSelectAction);
+                break;
+            case CreatureAiBaseAction.targetSetAction:
+                ActivateAction(OnTargetSetAction);
+                break;
+        }
     }
 }

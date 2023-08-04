@@ -8,6 +8,7 @@ public class VisitorCreature : Creature
 {
     [SerializeField] private VisitorType visitorType = VisitorType.none;
 
+    public VisitorAi VisitorAi => Ai as VisitorAi;
 
     public VisitorType VisitorType => visitorType;
 

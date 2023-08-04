@@ -44,10 +44,10 @@ public class StaffSelector : MonoBehaviour
         StaffCreature newStaff = staff.transform.root.GetComponent<StaffCreature>();
         if (newStaff == null) { Debug.Log($"Staff {staff.name} doesn't have StaffCreature component."); return; }
 
-        if (SelectedStaff != null) { SelectedStaff.Ai.FreeAi(); }
+        if (SelectedStaff != null) { SelectedStaff.StaffAi.FreeAi(); }
 
         SelectedStaff = newStaff;
-        SelectedStaff.Ai.Select();
+        SelectedStaff.StaffAi.Select();
 
         onStaffSelect.Invoke(SelectedStaff);
     }

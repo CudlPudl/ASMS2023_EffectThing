@@ -23,9 +23,9 @@ TagManager:
   - Staff
   - Visitor
   - 
-  - 
-  - 
-  - 
+  - CreatureTrigger
+  - StaffTrigger
+  - VisitorTrigger
   - 
   - 
   - 

@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CreatureAI : MonoBehaviour
+public abstract class CreatureAI : MonoBehaviour
 {
     [SerializeField] private Creature creature;
     [Space(20)]
     [SerializeField] private AiAction defaultOnSpawnAction;
-    [SerializeField] private AiAction defaultOnSelectAction;
-    [SerializeField] private AiAction defaultOnFreeAction;
     [SerializeField] private AiAction defaultOnTargetSetAction;
 
 
 
     // Actions
+    public AiAction DefaultOnSpawnAction => defaultOnSpawnAction;
+    public AiAction DefaultOnTargetSetAction => defaultOnTargetSetAction;
+
     public AiAction OnSpawnAction { get; set; }
-    public AiAction OnSelectAction { get; set; }
-    public AiAction OnFreeAction { get; set; }
     public AiAction OnTargetSetAction { get; set; }
 
 
@@ -40,44 +39,24 @@ public class CreatureAI : MonoBehaviour
 
 
     // Awake / Start
-    protected void Awake()
+    protected virtual void Awake()
     {
-        OnSpawnAction = defaultOnSpawnAction;
-        OnSelectAction = defaultOnSelectAction;
-        OnFreeAction = defaultOnFreeAction;
-        OnTargetSetAction = defaultOnTargetSetAction;
+        OnSpawnAction = DefaultOnSpawnAction;
+        OnTargetSetAction = DefaultOnTargetSetAction;
     }
 
-    protected void Start()
+    protected virtual void Start()
     { ActivateAction(OnSpawnAction); }
 
 
 
+
     // Update
-    private void Update()
+    protected virtual void Update()
     {
         ActiveAction.OnUpdate(creature);
     }
 
-
-
-    // Select
-    public void Select()
-    {
-        TargetType = CreatureAiTargetType.none;
-        OnSelect();
-    }
-    protected void OnSelect() { ActivateAction(OnSelectAction); }
-
-
-
-    // Free
-    public void FreeAi()
-    {
-        TargetType = CreatureAiTargetType.none;
-        OnFreeAi();
-    }
-    protected void OnFreeAi() { ActivateAction(OnFreeAction); }
 
 
 
@@ -105,7 +84,7 @@ public class CreatureAI : MonoBehaviour
         TargetType = CreatureAiTargetType.none;
         OnTargetChange();
     }
-    protected void OnTargetChange()
+    protected virtual void OnTargetChange()
     { ActivateAction(OnTargetSetAction); }
 
 
@@ -118,41 +97,11 @@ public class CreatureAI : MonoBehaviour
         ActiveAction = action;
         ActiveAction.OnActivate(creature);
     }
-    public void ActivateAction(CreatureAiBaseAction actionType)
-    {
-        switch (actionType)
-        {
-            case CreatureAiBaseAction.none:
-                break;
-            case CreatureAiBaseAction.defaultSpawnAction:
-                ActivateAction(defaultOnSpawnAction);
-                break;
-            case CreatureAiBaseAction.defaultSelectAction:
-                ActivateAction(defaultOnSelectAction);
-                break;
-            case CreatureAiBaseAction.defaultFreeAction:
-                ActivateAction(defaultOnFreeAction);
-                break;
-            case CreatureAiBaseAction.defaultTargetSetAction:
-                ActivateAction(defaultOnFreeAction);
-                break;
-            case CreatureAiBaseAction.spawnAction:
-                ActivateAction(OnSpawnAction);
-                break;
-            case CreatureAiBaseAction.selectAction:
-                ActivateAction(OnSelectAction);
-                break;
-            case CreatureAiBaseAction.freeAction:
-                ActivateAction(OnFreeAction);
-                break;
-            case CreatureAiBaseAction.targetSetAction:
-                ActivateAction(OnTargetSetAction);
-                break;
-        }
-    }
+    public abstract void ActivateAction(CreatureAiBaseAction actionType);
 
 
 
+    // Methods
     public Vector3 GetTargetLocation()
     {
         switch (TargetType)
@@ -188,7 +137,6 @@ public class CreatureAI : MonoBehaviour
         }
         return Vector3.zero;
     }
-
     public float DistanceToTarget()
     {
         Vector3 loc = GetTargetLocation();
@@ -212,11 +160,9 @@ public enum CreatureAiBaseAction
 
     defaultSpawnAction = 1,
     defaultSelectAction = 2,
-    defaultFreeAction = 3,
     defaultTargetSetAction = 4,
 
     spawnAction = 11,
     selectAction = 12,
-    freeAction = 13,
     targetSetAction = 14
 }

@@ -14,6 +14,8 @@ public abstract class Creature : MonoBehaviour
     public CreatureType CreatureType => creatureType;
     public CreatureMovement Movement => movement;
     public CreatureAI Ai => ai;
+
+    public virtual void Despawn() { Destroy(gameObject); }
 }
 
 public enum CreatureType
