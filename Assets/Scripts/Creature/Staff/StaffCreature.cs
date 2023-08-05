@@ -14,6 +14,9 @@ public class StaffCreature : Creature
     public VisitorType WantedVisitorType { get => wantedVisitorType; set { wantedVisitorType = value; visitorMagnet.VisitorType = value; } }
 
 
-
-
+    public override void Despawn()
+    {
+        ObjectManager.instance.SpawnedStaffs.Remove(this);
+        base.Despawn();
+    }
 }

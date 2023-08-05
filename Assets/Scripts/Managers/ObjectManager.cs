@@ -25,6 +25,8 @@ public class ObjectManager : MonoBehaviour
     { get => availableBoothActivities; set => availableBoothActivities = value; }
 
 
+    public List<StaffCreature> SpawnedStaffs { get; set; } = new List<StaffCreature>();
+    public List<VisitorCreature> SpawnedVisitors { get; set; } = new List<VisitorCreature>();
 
 
     // Setup
@@ -84,13 +86,17 @@ public class ObjectManager : MonoBehaviour
         if (visitorPrefabs.Count == 0) { Debug.Log("No visitor prefabs set"); return; }
         if (ExitPoints.Count == 0) { return; }
 
-        Instantiate(visitorPrefabs[Random.Range(0, visitorPrefabs.Count)], ExitPoints[Random.Range(0, ExitPoints.Count)].transform.position, Quaternion.identity);
+        SpawnedVisitors.Add(
+        Instantiate(visitorPrefabs[Random.Range(0, visitorPrefabs.Count)], ExitPoints[Random.Range(0, ExitPoints.Count)].transform.position, Quaternion.identity
+            ));
     }
     public void SpawnStaff()
     {
         if (staffPrefabs.Count == 0) { Debug.Log("No staff prefabs set"); return; }
         if (InactiveEventBooths.Count == 0) { return; }
 
-        Instantiate(staffPrefabs[Random.Range(0, staffPrefabs.Count)], InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].transform.position, Quaternion.identity);
+        SpawnedStaffs.Add(
+        Instantiate(staffPrefabs[Random.Range(0, staffPrefabs.Count)], InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].transform.position, Quaternion.identity
+            ));
     }
 }

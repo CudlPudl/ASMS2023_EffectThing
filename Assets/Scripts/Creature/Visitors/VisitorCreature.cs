@@ -12,7 +12,15 @@ public class VisitorCreature : Creature
 
     public VisitorType VisitorType => visitorType;
 
+    public VisitorCapturer CurrentlyCapturedBy { get; set; } = null;
 
+
+    public override void Despawn()
+    {
+        if (CurrentlyCapturedBy != null) { CurrentlyCapturedBy.DeregisterVisitor(this); }
+        ObjectManager.instance.SpawnedVisitors.Remove(this);
+        base.Despawn();
+    }
 
 }
 

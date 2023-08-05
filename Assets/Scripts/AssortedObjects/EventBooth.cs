@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventBooth : MonoBehaviour
+public class EventBooth : VisitorCapturer
 {
     [SerializeField] private GoalAction onBoothAction;
     [SerializeField] private GoalAction onBoothEndAction;
@@ -25,6 +25,7 @@ public class EventBooth : MonoBehaviour
         {
             visitor.VisitorAi.CurrentActivity = BoothActivity.BoothActivityType;
             onBoothAction.SetAction(visitor);
+            RegisterVisitor(visitor);
         }
         else
         {
@@ -61,6 +62,9 @@ public class EventBooth : MonoBehaviour
 
         ObjectManager.instance.AvailableBoothActivities.Add(BoothActivity);
         BoothActivity = new BoothActivity();
+
+        DeregisterAllVisitors();
+
         this.enabled = false;
         this.enabled = true;
     }

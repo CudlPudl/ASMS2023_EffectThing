@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VisitorMagnet : MonoBehaviour
+public class VisitorMagnet : VisitorCapturer
 {
     [SerializeField] private VisitorType visitorType = VisitorType.none;
     [SerializeField] private GameObject visitorTargetObject;
@@ -22,6 +22,7 @@ public class VisitorMagnet : MonoBehaviour
             visitor.Ai.ObjectTarget = visitorTargetObject;
             visitor.Ai.TargetType = CreatureAiTargetType.gameObject;
             visitor.Ai.ActivateAction(onCaptureAction);
+            RegisterVisitor(visitor);
         }
     }
 }
