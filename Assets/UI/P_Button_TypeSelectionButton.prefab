@@ -345,10 +345,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 211747610392350073}
-        m_TargetAssemblyTypeName: WidgetSwitcher, Assembly-CSharp
-        m_MethodName: SetActiveIndex
-        m_Mode: 3
+      - m_Target: {fileID: 2251390862186122759}
+        m_TargetAssemblyTypeName: ToggleButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 8563185995433497915}
   _switcher: {fileID: 211747610392350073}
+  _group: {fileID: 0}
   _state: 1
   OnValueChanged:
     m_PersistentCalls:
