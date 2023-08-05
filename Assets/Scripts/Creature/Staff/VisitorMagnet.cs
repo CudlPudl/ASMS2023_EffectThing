@@ -8,7 +8,36 @@ public class VisitorMagnet : VisitorCapturer
     [SerializeField] private GameObject visitorTargetObject;
     [SerializeField] private AiAction onCaptureAction;
 
-    public VisitorType VisitorType { get => visitorType; set => visitorType = value; }
+    [Space(20)]
+    [SerializeField] private MeshRenderer tempRend;
+    [SerializeField] private Material nerdMat;
+    [SerializeField] private Material geekMat;
+    [SerializeField] private Material gamerMat;
+    [SerializeField] private Material noneMat;
+
+    public VisitorType VisitorType
+    {
+        get => visitorType; set
+        {
+            visitorType = value;
+            switch (visitorType)
+            {
+                case VisitorType.any:
+                case VisitorType.none:
+                    tempRend.material = noneMat;
+                    break;
+                case VisitorType.nerd:
+                    tempRend.material = nerdMat;
+                    break;
+                case VisitorType.geek:
+                    tempRend.material = geekMat;
+                    break;
+                case VisitorType.gamer:
+                    tempRend.material = gamerMat;
+                    break;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
