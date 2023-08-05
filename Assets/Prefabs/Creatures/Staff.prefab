@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 345571205894672127}
   - component: {fileID: 946570167624532002}
   - component: {fileID: 4401627950424345447}
-  m_Layer: 15
+  m_Layer: 20
   m_Name: VisitorMagnet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +302,9 @@ MonoBehaviour:
   ai: {fileID: 723309453213450497}
   wantedVisitorType: 0
   visitorMagnet: {fileID: 4401627950424345447}
+  OnVisitorTypeChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1514728901630552157
 MonoBehaviour:
   m_ObjectHideFlags: 0
