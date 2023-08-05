@@ -8,26 +8,26 @@ public class StaffPanel : MonoBehaviour
     [SerializeField] private Transform _root;
     [SerializeField] private StaffSelectorWidget _widget;
     [SerializeField] private StaffSelector _staffSelector;
-    
-    public void OnAwake()
-    {
-        ObjectManager.instance.OnSpawnedStaff.AddListener(OnStaffSpawned);
-    }
 
-    private void OnStaffSpawned(List<StaffCreature> staff)
+    public void Awake()
     {
         var childCount = _root.childCount;
+        if (childCount == 0)
+            return;
         for (var i = childCount - 1; i < 0; --i)
         {
             Destroy(_root.GetChild(i).gameObject);
         }
-
-        foreach (var member in staff)
-        {
-            var go = Instantiate(_widget, _root, true);
-            _widget.Initialize(member, _staffSelector);
-        }
     }
-    
+    public void Start()
+    {
+        ObjectManager.instance.OnSpawnedStaff.AddListener(OnStaffSpawned);
+    }
 
+    private void OnStaffSpawned(StaffCreature staff)
+    {
+        var go = Instantiate(_widget, _root);
+        go.Initialize(staff, _staffSelector);
+        go.OnStaffSelected(null);
+    }
 }

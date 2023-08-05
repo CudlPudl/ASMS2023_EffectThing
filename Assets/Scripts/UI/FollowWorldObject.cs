@@ -9,6 +9,12 @@ public class FollowWorldObject : MonoBehaviour
 
     protected void Update()
     {
+        if (_followTarget == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         transform.position = _camera.WorldToScreenPoint(_followTarget.position);
     }
 }

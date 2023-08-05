@@ -49,6 +49,9 @@ MonoBehaviour:
   OnSpawnedStaff:
     m_PersistentCalls:
       m_Calls: []
+  OnVisitorSpawned:
+    m_PersistentCalls:
+      m_Calls: []
   visitorSpawnDelay: 1
   visitorPrefabs:
   - {fileID: 6425946301002883222, guid: 463bc8f65917d614ca8a339240a7b924, type: 3}
@@ -117,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visitorsAtStart: 10
-  staffsAtStart: 10
+  staffsAtStart: 4
   activeBoothAtStart: 3
 --- !u!114 &3868399670935868054
 MonoBehaviour:
