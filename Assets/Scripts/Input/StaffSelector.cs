@@ -13,7 +13,7 @@ public class StaffSelector : MonoBehaviour
     public StaffEvent OnStaffSelect = new StaffEvent();
     [SerializeField] private AreaSelect areaSelect;
     [SerializeField] private float NewSelectionDelay = 0.1f;
-    private float previousSelectionTime = 0f;
+    [FormerlySerializedAs("previousSelectionTime")] public float _previousSelectionTime = 0f;
 
     public Camera ActiveCamera { get => activeCamera; set => activeCamera = value; }
     public List<StaffCreature> SelectedStaff { get; private set; } = new List<StaffCreature>();
@@ -108,7 +108,7 @@ public class StaffSelector : MonoBehaviour
     public void SelectStaff(List<StaffCreature> staff)
     {
         // Avoid spam selection
-        if (Time.time - previousSelectionTime < NewSelectionDelay)
+        if (Time.time - _previousSelectionTime < NewSelectionDelay)
             return;
         
         if (SelectedStaff != null) { SelectedStaff.ForEach(x => x.StaffAi.FreeAi()); };
@@ -125,7 +125,7 @@ public class StaffSelector : MonoBehaviour
         if (SelectedStaff.Count == 0)
             Deselect();
 
-        previousSelectionTime = Time.time;
+        RecordPreviousSelectionTime();
     }
 
     private void SelectStaff(GameObject staff)
@@ -155,5 +155,10 @@ public class StaffSelector : MonoBehaviour
         if (SelectedStaff.Count == 0) { return; }
         SelectedStaff.ForEach(x =>
             x.WantedVisitorType = visitorType);
+    }
+
+    public void RecordPreviousSelectionTime()
+    {
+        _previousSelectionTime = Time.time;
     }
 }

@@ -32,6 +32,7 @@ public class StaffSelectorWidget : MonoBehaviour
     public void OnWantedTypeChanged(VisitorType type)
     {
         _staff.WantedVisitorType = type;
+        _selector.RecordPreviousSelectionTime();
     }
 
     public void OnClick()
