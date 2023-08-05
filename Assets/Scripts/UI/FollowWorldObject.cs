@@ -7,7 +7,7 @@ public class FollowWorldObject : MonoBehaviour
     [SerializeField] protected Transform _followTarget;
     [SerializeField] protected Camera _camera;
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (_followTarget == null)
         {

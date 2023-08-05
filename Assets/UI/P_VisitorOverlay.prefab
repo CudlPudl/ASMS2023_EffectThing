@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6619204807846096387}
   - component: {fileID: 8097606720422458739}
   - component: {fileID: 894524065030231421}
+  - component: {fileID: 2458408575046669143}
   m_Layer: 0
   m_Name: P_VisitorOverlay
   m_TagString: Untagged
@@ -62,7 +63,19 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _icon: {fileID: 5297057110770698152}
   _happiness: {fileID: 0}
-  _canvasGroup: {fileID: 0}
+  _canvasGroup: {fileID: 2458408575046669143}
+--- !u!225 &2458408575046669143
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985434901633318845}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8301400490370253015
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,5 +19,14 @@ public class VisitorOverlay : FollowWorldObject
         _camera = camera;
         _icon.SetType(_visitor.VisitorType);
         Update();
+    }
+    
+    protected override void Update()
+    {
+        var res = Screen.currentResolution;
+        var compensation = res.height / 1080;
+        var distance = Vector2.Distance(Input.mousePosition, transform.position);
+        _canvasGroup.alpha = Mathf.Clamp01(1 - (distance - 150) / 50 * compensation);
+        base.Update();
     }
 }
