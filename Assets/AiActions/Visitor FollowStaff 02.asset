@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06aa05124fe2b844bb4877e6eff0e084, type: 3}
   m_Name: Visitor FollowStaff 02
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 3
   reachDistance: -1
   offsetMagnitudeRange: {x: 1, y: 3}
   onReachAction:

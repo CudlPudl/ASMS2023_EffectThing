@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2310350217602644365, guid: 3cc9c941c3ccdfb4e8e318456168f9a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bdd3087976c83040833e064a6e259df, type: 2}
     - target: {fileID: 2428814538587759085, guid: 3cc9c941c3ccdfb4e8e318456168f9a4, type: 3}
       propertyPath: patienceStats.Array.data[0].patiencePerSecond
       value: -3

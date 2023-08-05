@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43c98c7f3a9e3447863839e862faaaf, type: 3}
   m_Name: Staff MoveToTarget 01
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 3.5
   reachDistance: 0
   onReachAction:
     action: {fileID: 11400000, guid: 35ca65b360d11f34e8c93d5d55e7d7cf, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43c98c7f3a9e3447863839e862faaaf, type: 3}
   m_Name: RushToExit
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 4
   reachDistance: 0.1
   onReachAction:
     action: {fileID: 11400000, guid: 0618d02aa5cffc24297c9d552c499b59, type: 2}

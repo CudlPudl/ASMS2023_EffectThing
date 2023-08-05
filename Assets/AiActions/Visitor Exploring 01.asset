@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37002a5ab7b57fc458286be9f440170e, type: 3}
   m_Name: Visitor Exploring 01
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
   durationPerDirection: 1
   maxAngleChange: 45

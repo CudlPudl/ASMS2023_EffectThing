@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06aa05124fe2b844bb4877e6eff0e084, type: 3}
   m_Name: Staff MoveToTarget02
   m_EditorClassIdentifier: 
-  movementSpeed: 1
-  reachDistance: 1
-  offsetMagnitudeRange: {x: 1, y: 3}
+  movementSpeed: 3.5
+  reachDistance: 0.1
+  offsetMagnitudeRange: {x: 0.5, y: 2}
   onReachAction:
-    action: {fileID: 0}
+    action: {fileID: 11400000, guid: 35ca65b360d11f34e8c93d5d55e7d7cf, type: 2}
     baseAction: 0
