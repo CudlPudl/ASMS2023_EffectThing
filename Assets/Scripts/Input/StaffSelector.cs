@@ -26,12 +26,28 @@ public class StaffSelector : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1)) { TryMove(Input.mousePosition);}
 
+        if (Input.GetKeyUp(KeyCode.Space)) { FocusOnSelection(); }
+
         if (Input.GetKeyDown(KeyCode.Alpha1)) { ChangeWantedVisitorType(VisitorType.none); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { ChangeWantedVisitorType(VisitorType.nerd); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { ChangeWantedVisitorType(VisitorType.geek); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { ChangeWantedVisitorType(VisitorType.gamer); }
 
         timeSinceLastEndClick += Time.deltaTime;
+    }
+
+    private void FocusOnSelection()
+    {
+        var count = SelectedStaff.Count;
+        if (count <= 0)
+            return;
+
+        Vector3 sum = Vector3.zero;
+        foreach (var staff in SelectedStaff)
+        {
+            sum += staff.transform.position;
+        }
+        CameraMover.instance.SetTargetTo(sum / count);
     }
 
     private void TryMove(Vector3 mousePosition)
