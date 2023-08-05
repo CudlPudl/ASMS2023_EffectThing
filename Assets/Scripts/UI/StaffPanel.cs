@@ -8,6 +8,7 @@ public class StaffPanel : MonoBehaviour
     [SerializeField] private Transform _root;
     [SerializeField] private StaffSelectorWidget _widget;
     [SerializeField] private StaffSelector _staffSelector;
+    [SerializeField] private CameraMover _cameraMover;
 
     public void Awake()
     {
@@ -27,7 +28,7 @@ public class StaffPanel : MonoBehaviour
     private void OnStaffSpawned(StaffCreature staff)
     {
         var go = Instantiate(_widget, _root);
-        go.Initialize(staff, _staffSelector);
+        go.Initialize(staff, _staffSelector, _cameraMover);
         go.OnStaffSelected(null);
     }
 }

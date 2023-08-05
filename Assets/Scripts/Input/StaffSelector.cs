@@ -12,7 +12,8 @@ public class StaffSelector : MonoBehaviour
     [SerializeField] private LayerMask walkLayer;
     public StaffEvent OnStaffSelect = new StaffEvent();
     [SerializeField] private AreaSelect areaSelect;
-    [SerializeField] private float doubleClickTime = 0.25f;
+    [SerializeField] private float NewSelectionDelay = 0.1f;
+    private float previousSelectionTime = 0f;
 
     public Camera ActiveCamera { get => activeCamera; set => activeCamera = value; }
     public List<StaffCreature> SelectedStaff { get; private set; } = new List<StaffCreature>();
@@ -23,12 +24,24 @@ public class StaffSelector : MonoBehaviour
         if (Input.GetMouseButton(0)) { UpdateArea(Input.mousePosition); }
         if (Input.GetMouseButtonUp(0)) { TryEndClick(Input.mousePosition); }
 
+        if (Input.GetMouseButtonUp(1)) { TryMove(Input.mousePosition);}
+
         if (Input.GetKeyDown(KeyCode.Alpha1)) { ChangeWantedVisitorType(VisitorType.none); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { ChangeWantedVisitorType(VisitorType.nerd); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { ChangeWantedVisitorType(VisitorType.geek); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { ChangeWantedVisitorType(VisitorType.gamer); }
 
         timeSinceLastEndClick += Time.deltaTime;
+    }
+
+    private void TryMove(Vector3 mousePosition)
+    {
+        Ray ray = ActiveCamera.ScreenPointToRay(mousePosition);
+        if (Physics.Raycast(ray, out var hit, rayDistance, walkLayer))
+        {
+            SetTargetTo(hit.point);
+        }
+
     }
 
     private Vector3 areaStartPoint = Vector3.zero;
@@ -66,14 +79,10 @@ public class StaffSelector : MonoBehaviour
     {
         Ray ray = ActiveCamera.ScreenPointToRay(screenPoint);
         RaycastHit hit;
-
         if (Physics.Raycast(ray, out hit, rayDistance, walkLayer))
         {
-            if (timeSinceLastEndClick < doubleClickTime) { SetTargetTo(hit.point); }
             if (areaIsOn) { areaSelect.EndArea(areaStartPoint, hit.point); }
         }
-
-        timeSinceLastEndClick = 0.0f;
         areaStartPoint = Vector3.zero;
         areaIsOn = false;
     }
@@ -82,6 +91,10 @@ public class StaffSelector : MonoBehaviour
 
     public void SelectStaff(List<StaffCreature> staff)
     {
+        // Avoid spam selection
+        if (Time.time - previousSelectionTime < NewSelectionDelay)
+            return;
+        
         if (SelectedStaff != null) { SelectedStaff.ForEach(x => x.StaffAi.FreeAi()); };
 
         SelectedStaff = staff;
@@ -91,6 +104,12 @@ public class StaffSelector : MonoBehaviour
             SelectedStaff[i].StaffAi.Select();
             OnStaffSelect.Invoke(SelectedStaff[i]);
         }
+        
+        //Deselect in case none selected
+        if (SelectedStaff.Count == 0)
+            Deselect();
+
+        previousSelectionTime = Time.time;
     }
 
     private void SelectStaff(GameObject staff)
@@ -103,6 +122,11 @@ public class StaffSelector : MonoBehaviour
     public void SelectStaff(StaffCreature staff)
     { SelectStaff(new List<StaffCreature> { staff }); }
 
+    public void Deselect()
+    {
+        OnStaffSelect.Invoke(null);
+    }
+    
     private void SetTargetTo(Vector3 location)
     {
         if (SelectedStaff.Count == 0) { return; }

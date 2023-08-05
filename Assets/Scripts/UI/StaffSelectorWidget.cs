@@ -8,11 +8,13 @@ public class StaffSelectorWidget : MonoBehaviour
     [SerializeField] private StaffSelector _selector;
     [SerializeField] private StaffCreature _staff;
     [SerializeField] private GameObject _selectionGroup;
+    [SerializeField] private CameraMover _cameraMover;
 
-    public void Initialize(StaffCreature creature, StaffSelector selector)
+    public void Initialize(StaffCreature creature, StaffSelector selector, CameraMover cameraMover)
     {
         _staff = creature;
         _selector = selector;
+        _cameraMover = cameraMover;
         _selector.OnStaffSelect.AddListener(OnStaffSelected);
     }
     
@@ -35,5 +37,6 @@ public class StaffSelectorWidget : MonoBehaviour
     public void OnClick()
     {
         _selector.SelectStaff(_staff);
+        _cameraMover.SetTargetTo(_staff.gameObject);
     }
 }

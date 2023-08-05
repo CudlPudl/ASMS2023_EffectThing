@@ -31,6 +31,6 @@ public class AreaSelect : MonoBehaviour
             if (bounds.Contains(x.transform.position)) { result.Add(x); }
         });
 
-        if (result.Count > 0) { staffSelector.SelectStaff(result); }
+        staffSelector.SelectStaff(result);
     }
 }

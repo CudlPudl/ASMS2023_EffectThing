@@ -265,7 +265,7 @@ MonoBehaviour:
   walkLayer:
     serializedVersion: 2
     m_Bits: 512
-  onStaffSelect:
+  OnStaffSelect:
     m_PersistentCalls:
       m_Calls: []
   areaSelect: {fileID: 168777381747939252}
@@ -1038,6 +1038,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4055102969759533331, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
+      propertyPath: _cameraMover
+      value: 
+      objectReference: {fileID: 7690316499373554876}
+    - target: {fileID: 4055102969759533331, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
       propertyPath: _staffSelector
       value: 
       objectReference: {fileID: 562159243442725811}
@@ -1652,6 +1656,14 @@ PrefabInstance:
     - target: {fileID: 7827064811270234899, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969191994403204546, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2041369811505899618}
+    - target: {fileID: 7969191994403204546, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8139674449698656698, guid: 8e3851e136d53034cb7cdedb5ded03c9, type: 3}
       propertyPath: m_AnchorMax.y
