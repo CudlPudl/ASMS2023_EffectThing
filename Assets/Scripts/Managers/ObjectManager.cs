@@ -9,7 +9,8 @@ public class ObjectManager : MonoBehaviour
     public static ObjectManager instance;
 
     public UnityEvent<List<StaffCreature>> OnSpawnedStaff;
-
+    public UnityEvent<VisitorCreature> OnVisitorSpawned;
+    
     [SerializeField] private float visitorSpawnDelay = 1f;
     [SerializeField] private List<VisitorCreature> visitorPrefabs = new List<VisitorCreature>();
     [SerializeField] private List<StaffCreature> staffPrefabs = new List<StaffCreature>();
@@ -90,9 +91,10 @@ public class ObjectManager : MonoBehaviour
         if (visitorPrefabs.Count == 0) { Debug.Log("No visitor prefabs set"); return; }
         if (ExitPoints.Count == 0) { return; }
 
-        SpawnedVisitors.Add(
-        Instantiate(visitorPrefabs[Random.Range(0, visitorPrefabs.Count)], ExitPoints[Random.Range(0, ExitPoints.Count)].transform.position, Quaternion.identity
-            ));
+        var visitor = Instantiate(visitorPrefabs[Random.Range(0, visitorPrefabs.Count)],
+            ExitPoints[Random.Range(0, ExitPoints.Count)].transform.position, Quaternion.identity);
+        SpawnedVisitors.Add(visitor);
+        OnVisitorSpawned.Invoke(visitor);
     }
     public void SpawnStaff()
     {
