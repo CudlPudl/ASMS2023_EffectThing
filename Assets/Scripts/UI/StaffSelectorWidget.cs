@@ -9,8 +9,19 @@ public class StaffSelectorWidget : MonoBehaviour
     [SerializeField] private StaffCreature _staff;
     [SerializeField] private GameObject _selectionGroup;
 
+    public void Initialize(StaffCreature creature, StaffSelector selector)
+    {
+        _staff = creature;
+        _selector = selector;
+    }
+    
     public void OnStaffSelected(StaffCreature staff)
     {
         _selectionGroup.SetActive(staff = _staff);
+    }
+
+    public void OnWantedTypeChanged(VisitorType type)
+    {
+        
     }
 }
