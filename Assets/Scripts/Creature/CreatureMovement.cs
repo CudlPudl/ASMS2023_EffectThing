@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class CreatureMovement : MonoBehaviour
 {
-    public void Move(Vector3 amount) { transform.position += amount; }
+    [SerializeField] private Creature creature;
+    [SerializeField] private GoalAction onForcebounds;
+    public void Move(Vector3 amount)
+    {
+        transform.position += amount;
+        if (transform.position.x > 79.5f || transform.position.x < -79.5f || transform.position.z > 79.5f || transform.position.z < -79.5f)
+        {
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -79.5f, 79.5f), 0f, Mathf.Clamp(transform.position.z, -79.5f, 79.5f));
+            onForcebounds.SetAction(creature);
+        }
+
+    }
 }

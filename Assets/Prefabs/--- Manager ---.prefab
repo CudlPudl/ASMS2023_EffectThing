@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a49433d82be445ba3518dcd170286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visitorSpawnDelay: 1
+  visitorPrefabs:
+  - {fileID: 8348326546374189358, guid: 3cc9c941c3ccdfb4e8e318456168f9a4, type: 3}
+  staffPrefabs:
+  - {fileID: 341131405105434807, guid: 3393b9019aa0cc5479fc76860106bcd2, type: 3}
   availableBoothActivities:
   - boothActivityType: 1
     duration: 120
@@ -88,9 +93,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9132044334374596234}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 566846188de4ef2489ecc812f5c3b8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visitorsAtStart: 10
+  staffsAtStart: 10
   activeBoothAtStart: 3
