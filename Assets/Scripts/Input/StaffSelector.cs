@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class StaffSelector : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class StaffSelector : MonoBehaviour
     [SerializeField] private float rayDistance = 1000f;
     [SerializeField] private LayerMask selectLayer;
     [SerializeField] private LayerMask walkLayer;
-    [SerializeField] private StaffEvent onStaffSelect;
+    public StaffEvent OnStaffSelect = new StaffEvent();
     [SerializeField] private AreaSelect areaSelect;
     [SerializeField] private float doubleClickTime = 0.25f;
 
@@ -88,7 +89,7 @@ public class StaffSelector : MonoBehaviour
         {
             if (SelectedStaff[i].Ai.IsMad) { SelectedStaff.RemoveAt(i); continue; }
             SelectedStaff[i].StaffAi.Select();
-            onStaffSelect.Invoke(SelectedStaff[i]);
+            OnStaffSelect.Invoke(SelectedStaff[i]);
         }
     }
 

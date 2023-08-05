@@ -8,7 +8,7 @@ public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
 
-    public UnityEvent<List<StaffCreature>> OnSpawnedStaff;
+    public UnityEvent<StaffCreature> OnSpawnedStaff;
     public UnityEvent<VisitorCreature> OnVisitorSpawned;
     
     [SerializeField] private float visitorSpawnDelay = 1f;
@@ -101,9 +101,9 @@ public class ObjectManager : MonoBehaviour
         if (staffPrefabs.Count == 0) { Debug.Log("No staff prefabs set"); return; }
         if (InactiveEventBooths.Count == 0) { return; }
 
-        SpawnedStaffs.Add(
-        Instantiate(staffPrefabs[Random.Range(0, staffPrefabs.Count)], InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].transform.position, Quaternion.identity
-            ));
-        OnSpawnedStaff.Invoke(SpawnedStaffs);
+        var staffMember = Instantiate(staffPrefabs[Random.Range(0, staffPrefabs.Count)],
+            InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].transform.position, Quaternion.identity);
+        SpawnedStaffs.Add(staffMember);
+        OnSpawnedStaff.Invoke(staffMember);
     }
 }

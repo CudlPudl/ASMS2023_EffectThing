@@ -9,6 +9,7 @@ public class StaffCreature : Creature
     [SerializeField] private VisitorType wantedVisitorType = VisitorType.none;
     [SerializeField] private VisitorMagnet visitorMagnet;
 
+    public UnityEvent<VisitorType> OnVisitorTypeChanged = new UnityEvent<VisitorType>();
     public StaffAi StaffAi => Ai as StaffAi;
 
     public VisitorType WantedVisitorType { get => wantedVisitorType; set { wantedVisitorType = value; visitorMagnet.VisitorType = value; } }
