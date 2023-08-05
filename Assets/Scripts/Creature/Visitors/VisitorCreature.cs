@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class VisitorCreature : Creature
 {
+    public VisitorEvent OnDespawn = new VisitorEvent();
     [SerializeField] private VisitorType visitorType = VisitorType.none;
 
     public VisitorAi VisitorAi => Ai as VisitorAi;

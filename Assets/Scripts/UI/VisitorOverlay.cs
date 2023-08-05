@@ -10,11 +10,11 @@ public class VisitorOverlay : FollowWorldObject
     [SerializeField] private StaffSelectionButton _icon;
     [SerializeField] private Slider _happiness;
     
-    public void SetVisitor(VisitorCreature visitor)
+    public void SetVisitor(VisitorCreature visitor, Camera camera)
     {
         _visitor = visitor;
         _followTarget = _visitor.transform;
-        // ADD CAMERA REFERENCE HERE
+        _camera = camera;
         _icon.SetType(_visitor.VisitorType);
     }
 }
