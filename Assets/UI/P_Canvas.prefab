@@ -2988,6 +2988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Button_StaffEntry (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6592954685877716550, guid: c35415bb6ab4aac4281a464a84b0043d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6718993604832253968, guid: c35415bb6ab4aac4281a464a84b0043d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
