@@ -4,14 +4,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaffelectionButton : MonoBehaviour
+public class StaffSelectionButton : MonoBehaviour
 {
 
     [SerializeField] private List<(VisitorType type, Sprite icon)> _icons;
     [SerializeField] private Image _iconImage;
-    [SerializeField] private StaffSelector _selector;
+    [SerializeField] private StaffSelectorWidget _selector;
+    [SerializeField] VisitorType _type;
 
-    public void OnStart()
+    public void Start()
     {
         for (var i = 0; i < _icons.Count; ++i)
         {
@@ -21,10 +22,16 @@ public class StaffelectionButton : MonoBehaviour
             }
         }
     }
-    [SerializeField] VisitorType _type;
+
+    public void SetType(VisitorType type)
+    {
+        _type = type;
+        //pretty crude but w/e :DDD
+        Start();
+    }
 
     public void OnClick()
     {
-        _selector.ChangeWantedVisitorType(_type);
+         _selector.OnWantedTypeChanged(_type);
     }
 }

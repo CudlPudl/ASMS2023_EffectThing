@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class ObjectManager : MonoBehaviour
 {
     public static ObjectManager instance;
+
+    public UnityEvent<List<StaffCreature>> OnSpawnedStaff;
 
     [SerializeField] private float visitorSpawnDelay = 1f;
     [SerializeField] private List<VisitorCreature> visitorPrefabs = new List<VisitorCreature>();
@@ -98,5 +102,6 @@ public class ObjectManager : MonoBehaviour
         SpawnedStaffs.Add(
         Instantiate(staffPrefabs[Random.Range(0, staffPrefabs.Count)], InactiveEventBooths[Random.Range(0, InactiveEventBooths.Count)].transform.position, Quaternion.identity
             ));
+        OnSpawnedStaff.Invoke(SpawnedStaffs);
     }
 }
