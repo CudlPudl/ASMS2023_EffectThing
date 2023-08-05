@@ -26,4 +26,7 @@ public abstract class Q4ComponentPlayer<T1, T2, T3> : Q4Player where T1 : Q4Vari
     protected abstract void CreatePreset();
     protected abstract void Set(T2 currentValue);
     protected abstract T2 Get();
+
+
+    public void ReplacePreset(T1 replacement) { preset = replacement; }
 }

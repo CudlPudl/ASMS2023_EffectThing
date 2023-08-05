@@ -63,6 +63,12 @@ public class StaffAi : CreatureAI
             case CreatureAiBaseAction.targetSetAction:
                 ActivateAction(OnTargetSetAction);
                 break;
+            case CreatureAiBaseAction.defaultBoothActivityEnd:
+                ActivateAction(DefaultOnSpawnAction);
+                break;
+            case CreatureAiBaseAction.boothActivityEnd:
+                ActivateAction(OnSpawnAction);
+                break;
         }
     }
 }

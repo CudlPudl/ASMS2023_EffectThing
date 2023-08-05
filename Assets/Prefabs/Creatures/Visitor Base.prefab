@@ -227,4 +227,5 @@ MonoBehaviour:
   - entertainmentType: 3
     patiencePerSecond: -5
   defaultOnZeroPatience: {fileID: 11400000, guid: e897debf0b00c2f4a96ac1772c0c5364, type: 2}
-  defaultOnBoothActivityEnd: {fileID: 0}
+  defaultOnBoothActivityEnd: {fileID: 11400000, guid: dcb85c2876a2eab4aa06bcabcc9924a1, type: 2}
+  captureCooldown: 1

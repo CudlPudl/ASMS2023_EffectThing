@@ -46,36 +46,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8a49433d82be445ba3518dcd170286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSpawnedStaff:
+    m_PersistentCalls:
+      m_Calls: []
   visitorSpawnDelay: 1
   visitorPrefabs:
-  - {fileID: 8348326546374189358, guid: 3cc9c941c3ccdfb4e8e318456168f9a4, type: 3}
+  - {fileID: 6425946301002883222, guid: 463bc8f65917d614ca8a339240a7b924, type: 3}
+  - {fileID: 2728236767889733948, guid: 07f49ff4d57347745bc81010aa8828b9, type: 3}
+  - {fileID: 7723107523670175015, guid: 89e398d4bf949ff4ca9979f3b8bbf4e5, type: 3}
   staffPrefabs:
   - {fileID: 341131405105434807, guid: 3393b9019aa0cc5479fc76860106bcd2, type: 3}
   availableBoothActivities:
   - boothActivityType: 1
     duration: 120
+    monitorColor: {fileID: 11400000, guid: c15d15800dc934e4284d6e903040f628, type: 2}
   - boothActivityType: 2
     duration: 90
+    monitorColor: {fileID: 11400000, guid: c0c6fc8e17254e345adb2250d41e9464, type: 2}
   - boothActivityType: 3
     duration: 60
+    monitorColor: {fileID: 11400000, guid: a4194642a27ab004aa6a69bd0b98b3a3, type: 2}
   - boothActivityType: 0
     duration: 30
+    monitorColor: {fileID: 11400000, guid: a3e29c38b732e33448b1c7fc4e0cd580, type: 2}
   - boothActivityType: 1
     duration: 90
+    monitorColor: {fileID: 11400000, guid: c15d15800dc934e4284d6e903040f628, type: 2}
   - boothActivityType: 2
     duration: 60
+    monitorColor: {fileID: 11400000, guid: c0c6fc8e17254e345adb2250d41e9464, type: 2}
   - boothActivityType: 3
     duration: 120
+    monitorColor: {fileID: 11400000, guid: a4194642a27ab004aa6a69bd0b98b3a3, type: 2}
   - boothActivityType: 0
     duration: 60
+    monitorColor: {fileID: 11400000, guid: a3e29c38b732e33448b1c7fc4e0cd580, type: 2}
   - boothActivityType: 1
     duration: 60
+    monitorColor: {fileID: 11400000, guid: c15d15800dc934e4284d6e903040f628, type: 2}
   - boothActivityType: 2
     duration: 120
+    monitorColor: {fileID: 11400000, guid: c0c6fc8e17254e345adb2250d41e9464, type: 2}
   - boothActivityType: 3
     duration: 90
+    monitorColor: {fileID: 11400000, guid: a4194642a27ab004aa6a69bd0b98b3a3, type: 2}
   - boothActivityType: -1
     duration: 60
+    monitorColor: {fileID: 11400000, guid: f3d605c1532baf14aaceb1d11bc328a8, type: 2}
   boothActivitySpawnDelays:
   - 15
   - 30

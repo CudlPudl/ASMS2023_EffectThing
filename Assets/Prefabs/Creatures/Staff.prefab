@@ -122,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 002911697d244e44ba1a2fffd98895b9, type: 2}
+  - {fileID: 2100000, guid: 2e9e4d896c3921347814d81ee7a3ff70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,5 +285,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creature: {fileID: 341131405105434807}
   defaultOnSpawnAction: {fileID: 11400000, guid: dcb85c2876a2eab4aa06bcabcc9924a1, type: 2}
-  defaultOnTargetSetAction: {fileID: 11400000, guid: 04bf29dc2d164124c950566242bb6312, type: 2}
+  defaultOnTargetSetAction: {fileID: 11400000, guid: d63a24dad49eece43b434c1dbed180dc, type: 2}
   defaultOnSelectAction: {fileID: 11400000, guid: 35ca65b360d11f34e8c93d5d55e7d7cf, type: 2}

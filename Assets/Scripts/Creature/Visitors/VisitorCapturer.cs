@@ -14,23 +14,17 @@ public abstract class VisitorCapturer : MonoBehaviour
             visitor.CurrentlyCapturedBy.DeregisterVisitor(visitor);
         }
         visitor.CurrentlyCapturedBy = this;
+        visitor.VisitorAi.ResetCaptureCoolDown();
         RegisteredVisitors.Add(visitor);
     }
 
     public void DeregisterVisitor(VisitorCreature visitor)
     {
+        if (visitor.CurrentlyCapturedBy != null) { visitor.CurrentlyCapturedBy.RegisteredVisitors.Remove(visitor); }
         visitor.CurrentlyCapturedBy = null;
-        RegisteredVisitors.Remove(visitor);
     }
 
-    public void DeregisterAllVisitors()
-    {
-        for (int i = RegisteredVisitors.Count - 1; i >= 0; i--)
-        {
-            RegisteredVisitors[i].CurrentlyCapturedBy = null;
-            RegisteredVisitors.RemoveAt(i);
-        }
-    }
+
 
     public List<(VisitorType, int)> GetVisitorCountsByType()
     {

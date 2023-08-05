@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 7145896820567938304, guid: 92cef4fbd7704724ab0c5992a7a3d6b9, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7366151789804502520, guid: 92cef4fbd7704724ab0c5992a7a3d6b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -16,7 +16,7 @@ public class VisitorMagnet : VisitorCapturer
 
         VisitorCreature visitor = other.GetComponent<VisitorCreature>();
         if (visitor == null) { return; }
-
+        if (!visitor.VisitorAi.IsCapturable()) { return; }
         if (VisitorType == VisitorType.any || VisitorType == visitor.VisitorType)
         {
             visitor.Ai.ObjectTarget = visitorTargetObject;

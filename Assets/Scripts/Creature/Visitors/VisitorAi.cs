@@ -9,6 +9,7 @@ public class VisitorAi : CreatureAI
     [SerializeField] private List<VisitorPatienceStat> patienceStats = new List<VisitorPatienceStat>();
     [SerializeField] private AiAction defaultOnZeroPatience;
     [SerializeField] private AiAction defaultOnBoothActivityEnd;
+    [SerializeField] private float captureCooldown = 1f;
 
     public AiAction DefaultOnZeroPatience => defaultOnZeroPatience;
     public AiAction DefaultOnBoothActivityEnd => defaultOnBoothActivityEnd;
@@ -58,8 +59,12 @@ public class VisitorAi : CreatureAI
         base.Start();
     }
 
+    private float captureCoolDownTimer = 0.0f;
+    public void ResetCaptureCoolDown() { captureCoolDownTimer = captureCooldown; }
+    public bool IsCapturable() { if (captureCoolDownTimer <= 0f) { return true; } return false; }
     protected override void Update()
     {
+        captureCoolDownTimer -= Time.deltaTime;
         AddPatience(patienceModifier * Time.deltaTime);
         base.Update();
     }
@@ -104,6 +109,12 @@ public class VisitorAi : CreatureAI
                 break;
             case CreatureAiBaseAction.targetSetAction:
                 ActivateAction(OnTargetSetAction);
+                break;
+            case CreatureAiBaseAction.defaultBoothActivityEnd:
+                ActivateAction(DefaultOnSpawnAction);
+                break;
+            case CreatureAiBaseAction.boothActivityEnd:
+                ActivateAction(OnSpawnAction);
                 break;
         }
     }

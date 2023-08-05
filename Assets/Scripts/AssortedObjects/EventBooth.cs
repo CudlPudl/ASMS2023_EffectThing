@@ -6,6 +6,8 @@ public class EventBooth : VisitorCapturer
 {
     [SerializeField] private GoalAction onBoothAction;
     [SerializeField] private GoalAction onBoothEndAction;
+    [SerializeField] private Q4MaterialColor monitorColorPlayer;
+    [SerializeField] private Q4VarColor monitorOffColor;
     public BoothActivity BoothActivity { get; set; } = new BoothActivity();
 
     public bool IsOn { get; set; } = false;
@@ -21,7 +23,7 @@ public class EventBooth : VisitorCapturer
         VisitorCreature visitor = other.transform.root.GetComponent<VisitorCreature>();
         if (visitor == null) { return; }
 
-        if (IsOn)
+        if (IsOn && visitor.VisitorAi.IsCapturable())
         {
             visitor.VisitorAi.CurrentActivity = BoothActivity.BoothActivityType;
             onBoothAction.SetAction(visitor);
@@ -31,6 +33,7 @@ public class EventBooth : VisitorCapturer
         {
             visitor.VisitorAi.CurrentActivity = VisitorType.none;
             onBoothEndAction.SetAction(visitor);
+            DeregisterVisitor(visitor);
         }
     }
 
@@ -50,7 +53,10 @@ public class EventBooth : VisitorCapturer
 
         ObjectManager.instance.InactiveEventBooths.Remove(this);
 
+        monitorColorPlayer.ReplacePreset(BoothActivity.MonitorColor);
+
         Timer = 0.0f;
+        IsOn = true;
     }
     private void EndActivity()
     {
@@ -63,10 +69,10 @@ public class EventBooth : VisitorCapturer
         ObjectManager.instance.AvailableBoothActivities.Add(BoothActivity);
         BoothActivity = new BoothActivity();
 
-        DeregisterAllVisitors();
-
         this.enabled = false;
         this.enabled = true;
+
+        monitorColorPlayer.ReplacePreset(monitorOffColor);
     }
 }
 
@@ -81,7 +87,9 @@ public class BoothActivity
 
     [SerializeField] private VisitorType boothActivityType = VisitorType.none;
     [SerializeField] private float duration = 9999999f;
+    [SerializeField] private Q4VarColor monitorColor;
 
     public VisitorType BoothActivityType => boothActivityType;
     public float Duration => duration;
+    public Q4VarColor MonitorColor => monitorColor;
 }
