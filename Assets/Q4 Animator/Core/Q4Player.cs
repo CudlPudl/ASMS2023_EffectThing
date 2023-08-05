@@ -17,6 +17,7 @@ public abstract class Q4Player : MonoBehaviour
     protected float Counter { get; private set; } = 0.0f;
     private byte playCounter = 0;
 
+    protected virtual void Awake() { }
     protected virtual void Start()
     {
         IsPlaying = false;

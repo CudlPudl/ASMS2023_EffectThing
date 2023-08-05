@@ -7,7 +7,9 @@ public abstract class Q4Variable<T1, T2> : ScriptableObject
     public Q4Variable(T1 customValue, T2 customEvaluatable)
     { value = customValue; evaluatable = customEvaluatable; }
 
+    [ColorUsage(true, true)]
     [SerializeField] private T1 value;
+    [GradientUsage(true)]
     [SerializeField] private T2 evaluatable;
 
     public T1 Value => value;
