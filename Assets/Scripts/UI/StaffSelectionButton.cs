@@ -7,7 +7,14 @@ using UnityEngine.UI;
 public class StaffSelectionButton : MonoBehaviour
 {
 
-    [SerializeField] private List<(VisitorType type, Sprite icon)> _icons;
+    [System.Serializable]
+    public struct VisitorTypeIcon
+    {
+        public VisitorType Type;
+        public Sprite Sprite;
+    }
+
+    [SerializeField] private List<VisitorTypeIcon> _icons;
     [SerializeField] private Image _iconImage;
     [SerializeField] private StaffSelectorWidget _selector;
     [SerializeField] VisitorType _type;
@@ -16,9 +23,9 @@ public class StaffSelectionButton : MonoBehaviour
     {
         for (var i = 0; i < _icons.Count; ++i)
         {
-            if (_icons[i].type == _type)
+            if (_icons[i].Type == _type)
             {
-                _iconImage.sprite = _icons[i].icon;
+                _iconImage.sprite = _icons[i].Sprite;
             }
         }
     }
@@ -33,5 +40,12 @@ public class StaffSelectionButton : MonoBehaviour
     public void OnClick()
     {
          _selector.OnWantedTypeChanged(_type);
+    }
+
+    public void OnValidate()
+    {
+        if (_iconImage == null)
+            return;
+        Start();
     }
 }

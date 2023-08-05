@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be42f5eb8dc0159409e23f6ab5861b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icons: []
   _iconImage: {fileID: 235940700161939441}
   _selector: {fileID: 0}
   _type: 0
@@ -1233,14 +1234,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5453614864918726304}
     m_Modifications:
-    - target: {fileID: 703930048403051580, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2251390862186122759, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
-      propertyPath: _state
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3842866546547188426, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1319,10 +1312,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842866546547188426, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477402733632062080, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5019483666822563977, guid: e6b52eb3ce896434e97fe18f3668d401, type: 3}
