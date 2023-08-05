@@ -9,9 +9,9 @@ public class CreatureMovement : MonoBehaviour
     public void Move(Vector3 amount)
     {
         transform.position += amount;
-        if (transform.position.x > 79.5f || transform.position.x < -79.5f || transform.position.z > 79.5f || transform.position.z < -79.5f)
+        if (transform.position.x > 39.5f || transform.position.x < -39.5f || transform.position.z > 39.5f || transform.position.z < -39.5f)
         {
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -79.5f, 79.5f), 0f, Mathf.Clamp(transform.position.z, -79.5f, 79.5f));
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -39.5f, 39.5f), 0f, Mathf.Clamp(transform.position.z, -39.5f, 39.5f));
             onForcebounds.SetAction(creature);
         }
 
