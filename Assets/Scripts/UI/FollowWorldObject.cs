@@ -7,8 +7,8 @@ public class FollowWorldObject : MonoBehaviour
     [SerializeField] protected Transform _followTarget;
     [SerializeField] protected Camera _camera;
 
-    void Update()
+    protected void Update()
     {
-        _followTarget.position = _camera.WorldToScreenPoint(_followTarget.position);
+        transform.position = _camera.WorldToScreenPoint(_followTarget.position);
     }
 }

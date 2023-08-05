@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747777929970418995}
   - component: {fileID: 4167211464455017638}
+  - component: {fileID: 4055102969759533331}
   m_Layer: 0
   m_Name: StaffMembers
   m_TagString: Untagged
@@ -186,6 +187,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4055102969759533331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740610955576544511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7e28c930d64c94f82677bbeb32b1ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _root: {fileID: 747777929970418995}
+  _widget: {fileID: 7822340864275184933, guid: c35415bb6ab4aac4281a464a84b0043d, type: 3}
+  _staffSelector: {fileID: 0}
 --- !u!1 &1918213718047507432
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,8 +471,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5045797018179017546}
   - {fileID: 8181695966325855097}
+  - {fileID: 5045797018179017546}
   m_Father: {fileID: 5622192951920684231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

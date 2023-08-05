@@ -11,7 +11,7 @@ public class VisitorOverlayHandler : MonoBehaviour
     [SerializeField] private Camera _camera;
     private Dictionary<VisitorCreature, VisitorOverlay> _overlays = new Dictionary<VisitorCreature, VisitorOverlay>();
 
-    public void OnAwake()
+    public void Awake()
     {
         //Clear children before game start.
         var childCount = _root.childCount;
@@ -21,7 +21,7 @@ public class VisitorOverlayHandler : MonoBehaviour
         }
     }
     
-    public void OnStart()
+    public void Start()
     {
         ObjectManager.instance.OnVisitorSpawned.AddListener(OnVisitorAdded);
     }
