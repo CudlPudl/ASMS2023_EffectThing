@@ -84,7 +84,12 @@ public class StaffSelector : MonoBehaviour
         if (SelectedStaff != null) { SelectedStaff.ForEach(x => x.StaffAi.FreeAi()); };
 
         SelectedStaff = staff;
-        SelectedStaff.ForEach(x => { x.StaffAi.Select(); onStaffSelect.Invoke(x); });
+        for (int i = SelectedStaff.Count - 1; i >= 0; i--)
+        {
+            if (SelectedStaff[i].Ai.IsMad) { SelectedStaff.RemoveAt(i); continue; }
+            SelectedStaff[i].StaffAi.Select();
+            onStaffSelect.Invoke(SelectedStaff[i]);
+        }
     }
 
     private void SelectStaff(GameObject staff)

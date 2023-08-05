@@ -12,7 +12,7 @@ public class StaffCreature : Creature
     public StaffAi StaffAi => Ai as StaffAi;
 
     public VisitorType WantedVisitorType { get => wantedVisitorType; set { wantedVisitorType = value; visitorMagnet.VisitorType = value; } }
-
+    public VisitorMagnet VisitorMagnet => visitorMagnet;
 
     public override void Despawn()
     {

@@ -12,8 +12,13 @@ public class ExitPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        VisitorCreature visitor = other.transform.root.GetComponent<VisitorCreature>();
-        if (visitor == null) { return; }
-        if (visitor.VisitorAi.IsMad) { visitor.Ai.ActivateAction(despawnAction); }
+        Creature creature = other.transform.root.GetComponent<Creature>();
+        if (creature == null) { return; }
+        if (creature.Ai.IsMad)
+        {
+            creature.Ai.ActivateAction(despawnAction);
+            if (creature.CreatureType == CreatureType.visitor)
+            { ScoreManager.instance.ReducePoint(); }
+        }
     }
 }

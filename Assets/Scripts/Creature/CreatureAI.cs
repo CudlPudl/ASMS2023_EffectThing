@@ -27,6 +27,8 @@ public abstract class CreatureAI : MonoBehaviour
     public Vector3 LocationTarget { get; set; } = Vector3.zero;
     public GameObject ObjectTarget { get; set; } = null;
     public Vector3 DirectionTarget { get; set; } = Vector3.zero;
+    public bool IsMad { get; protected set; } = false;
+    public Creature Creature => creature;
 
 
 

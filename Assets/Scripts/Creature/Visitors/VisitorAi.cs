@@ -18,7 +18,7 @@ public class VisitorAi : CreatureAI
 
     private float patienceModifier = 0.0f;
     public float CurrentPatience { get; private set; } = 100f;
-    public bool IsMad { get; private set; } = false;
+
 
     public void AddPatience(float amount)
     {

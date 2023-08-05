@@ -26,7 +26,15 @@ public class StaffAi : CreatureAI
 
 
 
-
+    public void MakeMad()
+    {
+        if (!IsMad)
+        {
+            IsMad = true;
+            ObjectManager.instance.SpawnedStaffs.Remove(Creature as StaffCreature);
+            ((StaffCreature)Creature).VisitorMagnet.gameObject.SetActive(false);
+        }
+    }
     public void FreeAi()
     {
     }

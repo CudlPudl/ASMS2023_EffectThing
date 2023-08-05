@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7052070217648248346}
   - component: {fileID: 8962145813965926749}
   - component: {fileID: 6186559090393685852}
+  - component: {fileID: 3868399670935868054}
   m_Layer: 0
   m_Name: --- Manager ---
   m_TagString: Untagged
@@ -101,3 +102,26 @@ MonoBehaviour:
   visitorsAtStart: 10
   staffsAtStart: 10
   activeBoothAtStart: 3
+--- !u!114 &3868399670935868054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132044334374596234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe5ca934b7ca4d4aa36242031dc0b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negativePointsPerLife: 10
+  StartLifes: 10
+  onNegativeScore:
+    m_PersistentCalls:
+      m_Calls: []
+  onLifeLost:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameLost:
+    m_PersistentCalls:
+      m_Calls: []
