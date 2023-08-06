@@ -5,6 +5,7 @@ using UnityEngine;
 public class StaffAi : CreatureAI
 {
     [SerializeField] private AiAction defaultOnSelectAction;
+    [SerializeField] private AiAction onMadAction;
 
     public AiAction DefaultOnSelectAction => defaultOnSelectAction;
     public AiAction OnSelectAction { get; set; }
@@ -33,6 +34,7 @@ public class StaffAi : CreatureAI
             IsMad = true;
             ObjectManager.instance.SpawnedStaffs.Remove(Creature as StaffCreature);
             ((StaffCreature)Creature).VisitorMagnet.gameObject.SetActive(false);
+            ActivateAction(onMadAction);
         }
     }
     public void FreeAi()

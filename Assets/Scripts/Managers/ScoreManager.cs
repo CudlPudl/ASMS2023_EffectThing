@@ -74,6 +74,8 @@ public class ScoreManager : MonoBehaviour
         {
             CurrentNegativePoints -= negativePointsPerLife;
             CurrentLifes--;
+            if (ObjectManager.instance.SpawnedStaffs.Count > 0)
+            { ObjectManager.instance.SpawnedStaffs[0].StaffAi.MakeMad(); }
             onLifeLost.Invoke();
 
             if (CurrentLifes <= 0)

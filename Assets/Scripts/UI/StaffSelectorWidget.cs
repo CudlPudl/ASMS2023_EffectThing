@@ -10,6 +10,8 @@ public class StaffSelectorWidget : MonoBehaviour
     [SerializeField] private GameObject _selectionGroup;
     [SerializeField] private CameraMover _cameraMover;
 
+    public StaffCreature Staff => _staff;
+
     public void Initialize(StaffCreature creature, StaffSelector selector, CameraMover cameraMover)
     {
         _staff = creature;

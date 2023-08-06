@@ -36,4 +36,13 @@ public class StaffPanel : MonoBehaviour
         go.Initialize(staff, _staffSelector, _cameraMover);
         go.OnStaffSelected(null);
     }
+
+    public void FindAndDestroyStaffThing(StaffCreature staff)
+    {
+        for (var i = _root.childCount - 1; i >= 0; i--)
+        {
+            if (_root.GetChild(i).GetComponent<StaffSelectorWidget>().Staff == staff)
+            { Destroy(_root.GetChild(i).gameObject); return; }
+        }
+    }
 }

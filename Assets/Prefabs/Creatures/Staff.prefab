@@ -303,6 +303,7 @@ MonoBehaviour:
   normalmaterial: {fileID: 2100000, guid: 330e8cac3a5488e4a9d9b3e71a0e2d80, type: 2}
   madmaterial: {fileID: 2100000, guid: f34eee202128e5a4189239efb10e2ea4, type: 2}
   defaultOnSelectAction: {fileID: 11400000, guid: 35ca65b360d11f34e8c93d5d55e7d7cf, type: 2}
+  onMadAction: {fileID: 11400000, guid: e897debf0b00c2f4a96ac1772c0c5364, type: 2}
 --- !u!1 &8739734430761535196
 GameObject:
   m_ObjectHideFlags: 0
