@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int negativePointsPerLife = 10;
     [SerializeField] private int StartLifes = 10;
     [SerializeField] private TMPro.TMP_Text scoreTxt;
+    [SerializeField] private TMPro.TMP_Text timerTxt;
     [SerializeField] public UnityEvent onGameStart;
     [SerializeField] public UnityEvent onNegativeScore;
     [SerializeField] public UnityEvent onLifeLost;
@@ -26,7 +27,16 @@ public class ScoreManager : MonoBehaviour
     public int CurrentNegativePoints { get; set; }
 
     public bool GameOn { get; private set; } = false;
-    public float Timer { get; private set; } = 0.0f;
+    private float timer = 0.0f;
+    public float Timer
+    {
+        get => timer;
+        private set
+        {
+            timer = value;
+            timerTxt.text = $"Time:    {Mathf.FloorToInt(Timer / 60f)} : {Mathf.FloorToInt(Timer % 60)}";
+        }
+    }
 
     public void OnStart()
     {
