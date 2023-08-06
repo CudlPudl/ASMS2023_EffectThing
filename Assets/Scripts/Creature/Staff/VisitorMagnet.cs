@@ -9,11 +9,12 @@ public class VisitorMagnet : VisitorCapturer
     [SerializeField] private AiAction onCaptureAction;
 
     [Space(20)]
-    [SerializeField] private MeshRenderer tempRend;
-    [SerializeField] private Material nerdMat;
-    [SerializeField] private Material geekMat;
-    [SerializeField] private Material gamerMat;
-    [SerializeField] private Material noneMat;
+    [SerializeField] private SpriteRenderer bubbleRend;
+    [SerializeField] private SpriteRenderer iconRend;
+    [SerializeField] private Sprite nerdIcon;
+    [SerializeField] private Sprite geekIcon;
+    [SerializeField] private Sprite gamerIcon;
+    [SerializeField] private Sprite anyIcon;
 
     public VisitorType VisitorType
     {
@@ -22,20 +23,25 @@ public class VisitorMagnet : VisitorCapturer
             visitorType = value;
             switch (visitorType)
             {
-                case VisitorType.any:
                 case VisitorType.none:
-                    tempRend.material = noneMat;
+                    bubbleRend.enabled = false;
+                    iconRend.enabled = false;
+                    return;
+                case VisitorType.any:
+                    iconRend.sprite = anyIcon;
                     break;
                 case VisitorType.nerd:
-                    tempRend.material = nerdMat;
+                    iconRend.sprite = nerdIcon;
                     break;
                 case VisitorType.geek:
-                    tempRend.material = geekMat;
+                    iconRend.sprite = geekIcon;
                     break;
                 case VisitorType.gamer:
-                    tempRend.material = gamerMat;
+                    iconRend.sprite = gamerIcon;
                     break;
             }
+            iconRend.enabled = true;
+            bubbleRend.enabled = true;
         }
     }
 
