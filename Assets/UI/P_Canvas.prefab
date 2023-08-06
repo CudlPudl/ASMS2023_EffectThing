@@ -3985,6 +3985,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2259169843178053810}
     m_Modifications:
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4021413513927898419}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActiveIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: WidgetSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999802037828958175, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2190968588005324238, guid: e52f6788d14eecf438ecc423ec1b9c90, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -49,7 +49,13 @@ MonoBehaviour:
   OnSpawnedStaff:
     m_PersistentCalls:
       m_Calls: []
+  OnDespawnedStaff:
+    m_PersistentCalls:
+      m_Calls: []
   OnVisitorSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDespawnedVisitor:
     m_PersistentCalls:
       m_Calls: []
   visitorSpawnDelay: 1
@@ -136,6 +142,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   negativePointsPerLife: 10
   StartLifes: 10
+  scoreTxt: {fileID: 0}
+  timerTxt: {fileID: 0}
+  onGameStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: WidgetSwitcher, Assembly-CSharp
+        m_MethodName: SetActiveIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onNegativeScore:
     m_PersistentCalls:
       m_Calls: []
@@ -144,4 +179,28 @@ MonoBehaviour:
       m_Calls: []
   onGameLost:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: WidgetSwitcher, Assembly-CSharp
+        m_MethodName: SetActiveIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
