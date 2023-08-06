@@ -12,7 +12,13 @@ public class StaffCreature : Creature
     public UnityEvent<VisitorType> OnVisitorTypeChanged = new UnityEvent<VisitorType>();
     public StaffAi StaffAi => Ai as StaffAi;
 
-    public VisitorType WantedVisitorType { get => wantedVisitorType; set { wantedVisitorType = value; visitorMagnet.VisitorType = value; } }
+    public VisitorType WantedVisitorType { get => wantedVisitorType;
+        set
+        {
+            wantedVisitorType = value;
+            visitorMagnet.VisitorType = value;
+            OnVisitorTypeChanged.Invoke(value);
+        } }
     public VisitorMagnet VisitorMagnet => visitorMagnet;
 
     public override void Despawn()
