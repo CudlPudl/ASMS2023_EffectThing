@@ -27,10 +27,33 @@ public abstract class CreatureAI : MonoBehaviour
     public Vector3 LocationTarget { get; set; } = Vector3.zero;
     public GameObject ObjectTarget { get; set; } = null;
     public Vector3 DirectionTarget { get; set; } = Vector3.zero;
-    public bool IsMad { get; protected set; } = false;
+    private bool isMad = false;
+    public bool IsMad { get => isMad; protected set { if (isMad == value) { return; } isMad = value; ActivateMad(isMad); } }
     public Creature Creature => creature;
 
 
+    [Space(20)]
+    [SerializeField] private Q4Player normalPlayer;
+    [SerializeField] private Q4Player madPlayer;
+    [SerializeField] private Renderer headRenderer;
+    [SerializeField] private Material normalmaterial;
+    [SerializeField] private Material madmaterial;
+
+    private void ActivateMad(bool state)
+    {
+        if (state)
+        {
+            normalPlayer.Stop();
+            madPlayer.Play();
+            //headRenderer.material = madmaterial;
+        }
+        else
+        {
+            madPlayer.Stop();
+            normalPlayer.Play();
+            // headRenderer.material = normalmaterial;
+        }
+    }
 
     // Values for AiActions to control
     public List<bool> AiBools { get; set; } = new List<bool>();

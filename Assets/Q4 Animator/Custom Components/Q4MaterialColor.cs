@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Q4MaterialColor : Q4ComponentPlayer<Q4VarColor, Color, Gradient>
 {
-    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Renderer renderer;
     [SerializeField] private string colorName = "_BaseColor";
     [SerializeField] private int materialId = 0;
     [SerializeField] private bool useBaseIntensity = true;
+
+
     private Material mat;
     private float intensity = 1f;
 
