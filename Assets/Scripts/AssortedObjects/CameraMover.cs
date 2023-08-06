@@ -52,7 +52,7 @@ public class CameraMover : MonoBehaviour
     {
         // Don't really need to calculate this every frame. But you know, game jam. :^)
         var res = new Vector2(Screen.width, Screen.height);
-        var compensation = 1080f / res.y;
+        var compensation = res.y / 1080f;
         var paddingSize = cursorMovementPadding * compensation;
 
         var mousePos = Input.mousePosition;

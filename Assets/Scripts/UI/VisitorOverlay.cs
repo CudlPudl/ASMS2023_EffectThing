@@ -23,7 +23,7 @@ public class VisitorOverlay : FollowWorldObject
     
     protected override void Update()
     {
-        var compensation = 1080f / Screen.height;
+        var compensation = Screen.height / 1080f;
         var distance = Vector2.Distance(Input.mousePosition, transform.position);
         _canvasGroup.alpha = Mathf.Clamp01(1 - (distance - 150) / 50 * compensation);
         base.Update();

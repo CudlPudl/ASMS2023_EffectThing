@@ -636,6 +636,7 @@ MonoBehaviour:
   _selector: {fileID: 0}
   _staff: {fileID: 0}
   _selectionGroup: {fileID: 3653515996540880448}
+  _cameraMover: {fileID: 0}
 --- !u!114 &7125314534172876188
 MonoBehaviour:
   m_ObjectHideFlags: 0
