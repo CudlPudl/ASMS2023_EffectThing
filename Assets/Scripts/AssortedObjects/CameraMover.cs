@@ -12,6 +12,8 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private float followSpeed = 1f;
     [SerializeField] private float targetMoveSpeed = 1f;
     [Space(20)]
+    [SerializeField] private int cursorMovementPadding = 200;
+    [Space(20)]
     [SerializeField] private KeyCode up = KeyCode.W;
     [SerializeField] private KeyCode down = KeyCode.S;
     [SerializeField] private KeyCode right = KeyCode.D;
@@ -28,10 +30,9 @@ public class CameraMover : MonoBehaviour
 
     void Update()
     {
-        cameraPivot.position += (targetObject.position - cameraPivot.position) * Time.deltaTime * followSpeed;
-
-
-        Vector3 totalMovement = Vector3.zero;
+        cameraPivot.position += (targetObject.position - cameraPivot.position) * (Time.deltaTime * followSpeed);
+        
+        Vector3 totalMovement = MouseBasedMovement();
         if (Input.GetKey(up)) { totalMovement += Vector3.forward; }
         if (Input.GetKey(down)) { totalMovement -= Vector3.forward; }
         if (Input.GetKey(right)) { totalMovement += Vector3.right; }
@@ -40,12 +41,43 @@ public class CameraMover : MonoBehaviour
         if (totalMovement != Vector3.zero)
         {
             totalMovement.Normalize();
-            MoveTarget(totalMovement * Time.deltaTime * targetMoveSpeed);
+            MoveTarget(totalMovement * (Time.deltaTime * targetMoveSpeed));
         }
-
-
+        
         if (Input.GetKeyDown(focusPlus)) { FocusToStaff(1); }
         if (Input.GetKeyDown(focusMinus)) { FocusToStaff(-1); }
+    }
+
+    public Vector3 MouseBasedMovement()
+    {
+        // Don't really need to calculate this every frame. But you know, game jam. :^)
+        var res = new Vector2(Screen.width, Screen.height);
+        var compensation = 1080f / res.y;
+        var paddingSize = cursorMovementPadding * compensation;
+
+        var mousePos = Input.mousePosition;
+        var xDelta = NegativeValue(mousePos.x, res.x, paddingSize)
+                     + PositiveValue(mousePos.x, res.x, paddingSize);
+        var yDelta = NegativeValue(mousePos.y, res.y, paddingSize)
+                     + PositiveValue(mousePos.y, res.y, paddingSize);
+
+        return new Vector3(xDelta, 0, yDelta);
+    }
+
+    public float NegativeValue(float value, float max, float div)
+    {
+        return Mathf.Clamp(SafeDivide(value - div, div), -1f, 0f);
+    }
+
+    public float PositiveValue(float value, float max, float div)
+    {
+        Debug.LogWarning(value + div - max);
+        return Mathf.Clamp(SafeDivide(value + div - max, div), 0f, 1f);
+    }
+
+    public float SafeDivide(float a, float b)
+    {
+        return Mathf.Abs(a) < 0.001f ? 0f : a / b;
     }
 
     public void MoveTarget(Vector3 amount)

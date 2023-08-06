@@ -240,6 +240,7 @@ MonoBehaviour:
   bounds: 40
   followSpeed: 3
   targetMoveSpeed: 15
+  cursorMovementPadding: 64
   up: 119
   down: 115
   right: 100
@@ -271,6 +272,7 @@ MonoBehaviour:
       m_Calls: []
   areaSelect: {fileID: 168777381747939252}
   NewSelectionDelay: 0.1
+  _previousSelectionTime: 0
 --- !u!114 &3390546709542141608
 MonoBehaviour:
   m_ObjectHideFlags: 0

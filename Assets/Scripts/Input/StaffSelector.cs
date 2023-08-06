@@ -14,7 +14,8 @@ public class StaffSelector : MonoBehaviour
     [SerializeField] private AreaSelect areaSelect;
     [SerializeField] private float NewSelectionDelay = 0.1f;
     [FormerlySerializedAs("previousSelectionTime")] public float _previousSelectionTime = 0f;
-
+    private bool _isSpaceDown;
+    private bool _lockCameraToSelection;
     public Camera ActiveCamera { get => activeCamera; set => activeCamera = value; }
     public List<StaffCreature> SelectedStaff { get; private set; } = new List<StaffCreature>();
 
@@ -26,7 +27,11 @@ public class StaffSelector : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1)) { TryMove(Input.mousePosition);}
 
-        if (Input.GetKeyUp(KeyCode.Space)) { FocusOnSelection(); }
+        if (Input.GetKeyDown(KeyCode.Space)) { _isSpaceDown = true; }
+        if (Input.GetKeyUp(KeyCode.Space)) { _isSpaceDown = false;}
+
+        if (Input.GetKeyUp(KeyCode.L)) { _lockCameraToSelection = !_lockCameraToSelection; }
+        if (_isSpaceDown || _lockCameraToSelection) { FocusOnSelection(); }
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) { ChangeWantedVisitorType(VisitorType.none); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { ChangeWantedVisitorType(VisitorType.nerd); }
