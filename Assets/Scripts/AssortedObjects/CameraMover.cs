@@ -71,7 +71,6 @@ public class CameraMover : MonoBehaviour
 
     public float PositiveValue(float value, float max, float div)
     {
-        Debug.LogWarning(value + div - max);
         return Mathf.Clamp(SafeDivide(value + div - max, div), 0f, 1f);
     }
 
