@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6718993604832253968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -216,10 +216,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 78634501442368861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 9.283251, y: -29.45529}
+  m_SizeDelta: {x: 2.5665019, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7615100252036024502
 CanvasRenderer:
@@ -637,6 +637,17 @@ MonoBehaviour:
   _staff: {fileID: 0}
   _selectionGroup: {fileID: 3653515996540880448}
   _cameraMover: {fileID: 0}
+  _text: {fileID: 1237940565991558760}
+  _names:
+  - Charles
+  - Charlos
+  - Ricardo
+  - Eduardo
+  - Emily
+  - Barbie
+  - Barbara
+  - James
+  - Jessie
 --- !u!114 &7125314534172876188
 MonoBehaviour:
   m_ObjectHideFlags: 0
