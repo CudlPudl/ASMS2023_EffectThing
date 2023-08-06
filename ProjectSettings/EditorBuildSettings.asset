@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Mockup.unity
+    guid: 08a240788fdd4a149a602e63d8b0d7c8
   m_configObjects: {}
