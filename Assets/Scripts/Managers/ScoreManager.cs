@@ -9,9 +9,11 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private int negativePointsPerLife = 10;
     [SerializeField] private int StartLifes = 10;
-    [SerializeField] private UnityEvent onNegativeScore;
-    [SerializeField] private UnityEvent onLifeLost;
-    [SerializeField] private UnityEvent onGameLost;
+    [SerializeField] private TMPro.TMP_Text scoreTxt;
+    [SerializeField] public UnityEvent onGameStart;
+    [SerializeField] public UnityEvent onNegativeScore;
+    [SerializeField] public UnityEvent onLifeLost;
+    [SerializeField] public UnityEvent onGameLost;
 
 
     private void Awake()
@@ -23,6 +25,34 @@ public class ScoreManager : MonoBehaviour
     public int CurrentLifes { get; set; }
     public int CurrentNegativePoints { get; set; }
 
+    public bool GameOn { get; private set; } = false;
+    public float Timer { get; private set; } = 0.0f;
+
+    public void OnStart()
+    {
+        GameOn = true;
+        Timer = 0.0f;
+        CurrentLifes = ObjectManager.instance.SpawnedStaffs.Count;
+        CurrentNegativePoints = 0;
+        onGameStart.Invoke();
+    }
+
+    private void Update()
+    {
+        if (GameOn) { Timer += Time.deltaTime; }
+        else
+        {
+            if (ObjectManager.instance.SpawnedVisitors.Count > 0)
+            {
+                ObjectManager.instance.SpawnedVisitors[0].Despawn();
+            }
+
+            if (ObjectManager.instance.SpawnedStaffs.Count > 0)
+            {
+                ObjectManager.instance.SpawnedStaffs[0].Despawn();
+            }
+        }
+    }
 
 
     public void ReducePoint()
@@ -37,7 +67,11 @@ public class ScoreManager : MonoBehaviour
             onLifeLost.Invoke();
 
             if (CurrentLifes <= 0)
-            { onGameLost.Invoke(); }
+            {
+                scoreTxt.text = $"You Survived {Mathf.FloorToInt(Timer / 60f)} minutes and {Mathf.FloorToInt(Timer % 60)} seconds!";
+                GameOn = false;
+                onGameLost.Invoke();
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ public class StaffCreature : Creature
 
     public override void Despawn()
     {
+        ObjectManager.instance.OnDespawnedStaff.Invoke(this);
         ObjectManager.instance.SpawnedStaffs.Remove(this);
         base.Despawn();
     }

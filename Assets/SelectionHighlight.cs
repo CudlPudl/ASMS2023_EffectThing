@@ -13,9 +13,10 @@ public class SelectionHighlighter : MonoBehaviour
     public void Start()
     {
         ObjectManager.instance.OnSpawnedStaff.AddListener(OnStaffCreated);
+        ObjectManager.instance.OnDespawnedStaff.AddListener(OnStaffDespawned);
         _selector.OnStaffSelect.AddListener(OnStaffSelected);
     }
-    
+
     public void OnStaffCreated(StaffCreature staff)
     {
         var t = Instantiate(SelectionHighlight).transform;
@@ -41,6 +42,8 @@ public class SelectionHighlighter : MonoBehaviour
             _highlights[s].gameObject.SetGameObjectActive(isSelected);
         }
     }
+
+    public void OnStaffDespawned(StaffCreature staff) { _highlights.Remove(staff); }
 
     public void Update()
     {

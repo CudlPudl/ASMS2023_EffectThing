@@ -7,13 +7,13 @@ public class GameSetupper : MonoBehaviour
     [SerializeField] private int visitorsAtStart = 10;
     [SerializeField] private int staffsAtStart = 10;
     [SerializeField] private int activeBoothAtStart = 3;
-    void Start()
+
+    public void StartGame()
     {
         for (int i = activeBoothAtStart; i > 0; i--) { ObjectManager.instance.SpawnBooth(); }
         for (int i = visitorsAtStart; i > 0; i--) { ObjectManager.instance.SpawnVisitor(); }
         for (int i = staffsAtStart; i > 0; i--) { ObjectManager.instance.SpawnStaff(); }
 
-        ScoreManager.instance.CurrentLifes = ObjectManager.instance.SpawnedStaffs.Count;
-        ScoreManager.instance.CurrentNegativePoints = 0;
+        ScoreManager.instance.OnStart();
     }
 }

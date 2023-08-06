@@ -9,8 +9,10 @@ public class ObjectManager : MonoBehaviour
     public static ObjectManager instance;
 
     public UnityEvent<StaffCreature> OnSpawnedStaff;
+    public UnityEvent<StaffCreature> OnDespawnedStaff;
     public UnityEvent<VisitorCreature> OnVisitorSpawned;
-    
+    public UnityEvent<VisitorCreature> OnDespawnedVisitor;
+
     [SerializeField] private float visitorSpawnDelay = 1f;
     [SerializeField] private List<VisitorCreature> visitorPrefabs = new List<VisitorCreature>();
     [SerializeField] private List<StaffCreature> staffPrefabs = new List<StaffCreature>();
@@ -51,6 +53,7 @@ public class ObjectManager : MonoBehaviour
     // Updates
     private void Update()
     {
+        if (!ScoreManager.instance.GameOn) { return; }
         BoothSpawnerUpdate();
         VisitorSpawnerUpdate();
     }

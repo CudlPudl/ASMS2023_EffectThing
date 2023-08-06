@@ -10,19 +10,24 @@ public class StaffPanel : MonoBehaviour
     [SerializeField] private StaffSelector _staffSelector;
     [SerializeField] private CameraMover _cameraMover;
 
-    public void Awake()
+
+    public void Start()
+    {
+        ScoreManager.instance.onGameLost.AddListener(OnLost);
+        OnLost();
+
+        ObjectManager.instance.OnSpawnedStaff.AddListener(OnStaffSpawned);
+        ObjectManager.instance.SpawnedStaffs.ForEach(x => OnStaffSpawned(x));
+    }
+    public void OnLost()
     {
         var childCount = _root.childCount;
         if (childCount == 0)
             return;
-        for (var i = childCount - 1; i < 0; --i)
+        for (var i = childCount - 1; i >= 0; i--)
         {
             Destroy(_root.GetChild(i).gameObject);
         }
-    }
-    public void Start()
-    {
-        ObjectManager.instance.OnSpawnedStaff.AddListener(OnStaffSpawned);
     }
 
     private void OnStaffSpawned(StaffCreature staff)
