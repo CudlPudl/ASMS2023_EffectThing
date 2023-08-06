@@ -197,6 +197,8 @@ GameObject:
   - component: {fileID: 7690316499373554876}
   - component: {fileID: 562159243442725811}
   - component: {fileID: 3390546709542141608}
+  - component: {fileID: 4671025339935176680}
+  - component: {fileID: 2313137877755785526}
   m_Layer: 0
   m_Name: CameraMan
   m_TagString: Untagged
@@ -272,7 +274,53 @@ MonoBehaviour:
       m_Calls: []
   areaSelect: {fileID: 168777381747939252}
   NewSelectionDelay: 0.1
+  CommandSoundDelay: 2
   _previousSelectionTime: 0
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4671025339935176680}
+        m_TargetAssemblyTypeName: RandomAudioCaller, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PlayCommandSound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2313137877755785526}
+        m_TargetAssemblyTypeName: RandomAudioCaller, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMoveToPosition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ClickEffect, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3390546709542141608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +335,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selector: {fileID: 562159243442725811}
   SelectionHighlight: {fileID: 2439303458349242631, guid: 1fc145a44dfdda4448beb6efeed0de41, type: 3}
+--- !u!114 &4671025339935176680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971062646033740580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f828c624a7575b4692f19c613f781f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 328f1de5e8bf6e54cb702ff438610c66, type: 3}
+  - {fileID: 8300000, guid: fe65257311dc4d14192fa2d55614bdff, type: 3}
+  - {fileID: 8300000, guid: f6e049e628f6ad649b73a56e0283df81, type: 3}
+  - {fileID: 8300000, guid: cf51518f084517b4e8e7f768e954e98b, type: 3}
+--- !u!114 &2313137877755785526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971062646033740580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f828c624a7575b4692f19c613f781f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: e18f15e3a617a6c4f9fa1b2e3e2be5b8, type: 3}
+  - {fileID: 8300000, guid: 88b683b56186dce49ac6eedd0bae0ad2, type: 3}
+  - {fileID: 8300000, guid: 51c50da5736c1394cacf4f9757767efd, type: 3}
+  - {fileID: 8300000, guid: ac0ff30620585404e8a26e293fd86d0d, type: 3}
 --- !u!1 &4904467672082281847
 GameObject:
   m_ObjectHideFlags: 0

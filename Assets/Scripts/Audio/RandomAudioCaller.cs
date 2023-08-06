@@ -12,6 +12,6 @@ public class RandomAudioCaller : MonoBehaviour
     {
         if (clips.Count == 0)
             return;
-        AudioManager.Instance.PlaySound(this, clips[(int)RandomHelper.GetRandomRange(0, clips.Count)]);
+        AudioManager.Instance.PlaySound(this, clips[(int)RandomHelper.GetRandomRange(0, clips.Count)], pitch: RandomHelper.GetRandomRange(0.7f, 1.1f));
     }
 }

@@ -11,7 +11,7 @@ namespace RootieSmoothie.Audio
         [SerializeField]
         private readonly Stack<AudioSource> _pool = new();
         private List<AudioSource> _sources = new();
-        public bool IsSoundMuted = true;
+        public bool IsSoundMuted = false;
 
         public void Start()
         {

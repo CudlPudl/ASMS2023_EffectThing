@@ -13,12 +13,17 @@ public class StaffSelector : MonoBehaviour
     public StaffEvent OnStaffSelect = new StaffEvent();
     [SerializeField] private AreaSelect areaSelect;
     [SerializeField] private float NewSelectionDelay = 0.1f;
+    [SerializeField] private float CommandSoundDelay = 2f;
+    private float _lastCommandSoundTime;
     [FormerlySerializedAs("previousSelectionTime")] public float _previousSelectionTime = 0f;
+    public UnityEvent OnSelect = new UnityEvent();
     private bool _isSpaceDown;
     private bool _lockCameraToSelection;
+    [SerializeField] private UnityEvent PlayCommandSound = new UnityEvent();
     public Camera ActiveCamera { get => activeCamera; set => activeCamera = value; }
     public List<StaffCreature> SelectedStaff { get; private set; } = new List<StaffCreature>();
-
+    public UnityEvent<Vector3> OnMoveToPosition = new UnityEvent<Vector3>();
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) { TryClick(Input.mousePosition); }
@@ -61,6 +66,7 @@ public class StaffSelector : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, rayDistance, walkLayer))
         {
             SetTargetTo(hit.point);
+            OnMoveToPosition.Invoke(hit.point);
         }
 
     }
@@ -129,6 +135,8 @@ public class StaffSelector : MonoBehaviour
         //Deselect in case none selected
         if (SelectedStaff.Count == 0)
             Deselect();
+        else
+            OnSelect.Invoke();
 
         RecordPreviousSelectionTime();
     }
@@ -153,6 +161,11 @@ public class StaffSelector : MonoBehaviour
         if (SelectedStaff.Count == 0) { return; }
         SelectedStaff.ForEach(x =>
             x.Ai.SetTargetLocation(location));
+        if (_lastCommandSoundTime + CommandSoundDelay < Time.time)
+        {
+            _lastCommandSoundTime = Time.time;
+            PlayCommandSound.Invoke();
+        }
     }
 
     public void ChangeWantedVisitorType(VisitorType visitorType)
